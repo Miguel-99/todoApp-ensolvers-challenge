@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>To-Do List</h1>
+    <div class="rowItemContainer">
+        <div class="row" *ngFor="let todo of todoList">
+
+            <div class="col-1">
+                <input type="checkbox" name="tdCheckbox" id="tdCheckbox" [(ngModel)]="todo.completed" (change)="updateTodo(todo)" >
+            </div>
+
+            <div class="col-9">
+                <span>
+                    {{todo.description}}
+                </span>
+            </div>
+
+            <div class="col-1">
+                <button (click)="open(content, todo)" class="btn btn-link">Edit</button>
+            </div>
+
+            <div class="col-1">
+                <button (click)=deleteTodo(todo) class="btn btn-danger">Remove</button>
+            </div>
+
+            <ng-template #content let-modal>
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Editing Task "{{todo.description}}"</h4>
+
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" value="{{todo.description}}" #newValue>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" (click)="modal.close(newValue.value)">Save</button>
+                    <button type="button" class="btn btn-secondary" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true"> Cancel</span>
+                    </button>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="addItemContainer">
+        <div class="row">
+            <div class="col-11">
+                <input type="text" class="textbox" #textbox [(ngModel)]="newTodoTextbox"/>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="addTodo(textbox.value)">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

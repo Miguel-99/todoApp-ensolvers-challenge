@@ -1,0 +1,11 @@
+.textbox {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.row{
+    margin-bottom: 10px;
+}
