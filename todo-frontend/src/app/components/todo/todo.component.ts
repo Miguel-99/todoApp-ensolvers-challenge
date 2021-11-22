@@ -30,7 +30,6 @@ export class TodoComponent implements OnInit {
     this.todoService.getTodos().subscribe(
       (todoList: ITodoItem[]) => {
         this.todoList = todoList;
-        console.log(this.todoList);
 
       }
     )
@@ -48,12 +47,10 @@ export class TodoComponent implements OnInit {
 
   open(content: any, todoItem: ITodoItem) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      console.log("selected: " + todoItem.id);
       todoItem.description = result;
       this.updateTodo(todoItem);
       this.getTodoList();
     }, (reason) => {
-      console.log(reason);
     }
     );
   }
@@ -62,7 +59,6 @@ export class TodoComponent implements OnInit {
     this.todoService.updateTodo(todoItem).subscribe(
       (todoItem: any) => {
         this.getTodoList();
-        console.log(todoItem);
       }
     );
   }
@@ -71,7 +67,6 @@ export class TodoComponent implements OnInit {
     this.todoService.deleteTodo(todoItem.id).subscribe(
       (todoItem: any) => {
         this.getTodoList();
-        console.log(todoItem);
       }
     );
   }
