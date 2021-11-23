@@ -32,3 +32,13 @@ at Heroku and it turns off after 30 minutes if nobody uses it.
 
 Although this works, maybe using Docker could have been a better approach in this situation to make it more portable,
 run it on any environment and run it with one single command.
+
+## Improvements to add
+
+- Implement Swagger to document the api endpoints
+- Custom exceptions handled by an ExceptionHandler centralizing all posible errors
+- Unit and Integration tests
+- Secure pages with Spring Security, making sure a user is authenticated and protecting routes with roles/authorization
+and using jwt for expiration/validation
+- Use microservice architecture instead of a monolithic architecture
+- A better ui
